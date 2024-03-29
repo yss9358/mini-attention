@@ -2,7 +2,7 @@
 <div class="wrap">
     <div class="card-container">
         <div class="card-box">
-            <img src="../../assets/images/creditcard.png"><br>
+            <img src="../../assets/images/creditcard.png" v-on:click="getMoney"><br>
             <div class="timer">
                 <span>{{ timeCounter }}초가 지나면 주문이 취소됩니다.</span>
                 <!-- 시간초가 지나갈동안 결제가 안되면 메인으로 돌아감 -->
@@ -32,7 +32,8 @@ export default{
     data(){
         return {
             timeCounter : 30,
-            resTimeData : ''
+            resTimeData : '',
+            money : ''
         };
     },
     methods : {
@@ -59,7 +60,10 @@ export default{
 		},		
 		timeStop() {
             clearInterval(this.polling)
-		}
+		},
+        getMoney(){
+            console.log("승인");
+        }
     },
     created (){
         this.start();
