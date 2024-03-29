@@ -1,0 +1,28 @@
+/* main.css  */
+
+/*******************/
+.managerMenu{
+    margin-bottom: 580px;
+}
+.managerMenu .managerBtn{
+    width: 50px;
+}
+.mainBtn{
+    text-align: center;
+}
+.mainBtn button{
+    background-color: #FED900;
+    border: none;
+    width: 260px;
+    height: 260px;
+    border-radius: 50px;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 50px;
+}
+.mainBtn button:hover{
+    background-color: #31160B;
+    color: #fff;
+}
+/*****************************/

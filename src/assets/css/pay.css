@@ -1,0 +1,57 @@
+/*************payment**********/
+
+.card-container {
+    width: 1200px;
+    height: 953px;
+    background-color: #0000003a;
+    /* border: 1px solid #000; */
+    text-align: center;
+    font-size: 42px;
+}
+.card-box {
+    /* border: 1px solid #000; */
+    width: 1000px;
+    height: 700px;
+    background-color: #F2FFDC;
+    border-radius: 25px;
+    display: inline-block;
+    margin : 120px auto;
+}
+
+/***************************************/
+
+/*  payCard */
+
+.card-box img {
+    width: 800px;
+    height: 450px;
+    margin: 30px 0 0 0;
+    object-fit: cover;
+}
+
+/**********************************************/
+
+/*payResult*/
+
+.payMsg {
+    border: 1px solid #000;
+    margin: 200px 0 0 0;
+}
+
+.goHome {
+    border: 1px solid #000;
+    width: 700px;
+    background-color: #DCF4FF;
+    display: inline-block;
+    margin : 50px 0 0 0 ;
+    font-size: 50px;
+    color: #000;
+}
+
+.timer {
+    border: 1px solid #000;
+    margin-top : 30px;
+    display: inline-block;
+}
+
+/**********************************************/
