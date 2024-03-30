@@ -1,16 +1,24 @@
 /* main.css  */
 
-/*******************/
-.managerMenu{
+/*************************************************************/
+
+/* 매니저 아이콘 */
+.managerMenu{ /* 매니저아이콘 박스 */
     margin-bottom: 580px;
 }
-.managerMenu .managerBtn{
+.managerMenu .managerBtn{ /* 매니저아이콘 */
     width: 50px;
+    margin-left: 1150px;
+    cursor: pointer;
 }
-.mainBtn{
+
+
+/* 매장 포장 버튼 */
+.mainBtn{ /* 매장 포장 버튼 박스 */
     text-align: center;
 }
-.mainBtn button{
+
+.mainBtn button{  /* 매장, 포장 버튼 */
     background-color: #FED900;
     border: none;
     width: 260px;
@@ -19,9 +27,9 @@
     font-size: 50px;
     font-weight: bold;
     cursor: pointer;
-    margin-left: 50px;
+    margin-left: 38px;
 }
-.mainBtn button:hover{
+.mainBtn button:hover{ /* 매장 포장 버튼 마우스 올렸을 때 */
     background-color: #31160B;
     color: #fff;
 }
