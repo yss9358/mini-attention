@@ -128,6 +128,7 @@
     height: 150px;
     margin : 0px 30px ;
     cursor: pointer;
+    background-color: #fff;
 }
 /* 리스트 안에 이미지들*/
 .card-container .otherPay .payTable img{

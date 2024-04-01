@@ -39,7 +39,6 @@ export default{
         return {
             timeCounter : 30, // 타이머 시간초
             resTimeData : '', // 남은시간 표기 
-            point : '', // 포인트 적립여부 데이터
             payMessage : '카드를 여기다가 넣으라고' // 안내 메세지 
         };
     },
@@ -47,24 +46,7 @@ export default{
         // 결제 페이지 이동
         goResult(){
             console.log("승인");
-            ////////// 반복문 작성 자리//////////////
-            // 적립됐다는 데이터가 안넘어오면 1
-            // this.point = 1;
-            // this.$router.push({
-            //     path : '/pays/result',
-            //     query : {
-            //         point : 1
-            //     }
-            // });
-
-            // 적립됐다는 데이터가 넘어오면 2
-            this.point = 2;
-            this.$router.push({
-                path : '/pays/result',
-                query : {
-                    point : 2
-                }
-            });
+            this.$router.push('/pays/result');
         },/// 결제 페이지 이동 ////
 
 
@@ -92,7 +74,7 @@ export default{
 		},		
 		timeStop() {  
             clearInterval(this.polling);
-            // this.$router.push('/'); // 시간이 0 되면 자동으로 메인페이지로 감
+            this.$router.push('/'); // 시간이 0 되면 자동으로 메인페이지로 감
 		}
         /////////////////////////// 타이머끝 //////////////////////////////////
     },

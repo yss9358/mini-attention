@@ -72,7 +72,6 @@ export default{
         return {
             timeCounter : 30,
             resTimeData : '',
-            param : this.$route.params.point, // 적립여부 데이터  1이면 적립함 2면 적립안함
             orderList : [
                 {
                     name : '아메리카노',
@@ -88,16 +87,7 @@ export default{
         };
     },
     methods : {
-        pointOn(){
-            console.log("pointOn");
-            
-            
-        },
-        timer(){
-            console.log("timer");
-        },
-
-
+       
         /////////////////////////////////////// 타이머 ///////////////////////////////////////
         // 타이머 data에 timeCounter : 초 , restTimeData : "" 작성
         start(){
@@ -122,7 +112,7 @@ export default{
 		},		
 		timeStop() {
             clearInterval(this.polling);
-            // this.$router.push('/'); // 시간이 0 이 되면 메인페이지로 이동
+            this.$router.push('/'); // 시간이 0 이 되면 메인페이지로 이동
 		}
          /////////////////////////////////////// 타이머 ///////////////////////////////////////
     },    

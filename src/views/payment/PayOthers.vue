@@ -9,12 +9,12 @@
                 <img v-bind:src="barcodeImg" v-on:click="goResult">
             </div>
             
-            <div class="otherPay">
-                <div class="payTable" v-for="(list,i) in payTable" v-bind:key="i" v-on:click="red" >
+            <ul class="otherPay">
+                <li class="payTable" v-for="(list,i) in payTable" v-bind:key="i" v-on:click="othersClick" >
                     <img v-bind:src="list.src">
                     <p>{{ list.name }}</p>
-                </div>
-            </div>
+                </li>
+            </ul>
             <!-- ortherPay -->
             
             <!-- barcodeScan -->
@@ -49,7 +49,7 @@ export default{
             barcodeImg : require('../../assets/images/barcode.png'), // 바코드 이미지
             timeCounter : 30, // 타이머 시간초
             resTimeData : '', // 남은시간 표기 
-
+            changeColor : false,
             payTable : [ // 결제수단 이미지 
                 { // 삼성페이
                     name: '삼성페이', 
@@ -69,28 +69,11 @@ export default{
     methods : {
         goResult(){
             console.log("승인");
-            ////////// 반복문 작성 자리//////////////
-            // 적립됐다는 데이터가 안넘어오면 1
-            // this.point = 1;
-            // this.$router.push({
-            //     path : '/pays/result',
-            //     query : {
-            //         point : 1
-            //     }
-            // });
-
-            // 적립됐다는 데이터가 넘어오면 2
-            this.point = 2;
-            this.$router.push({
-                path : '/pays/result',
-                query : {
-                    point : 2
-                }
-            });
-            ////////////////////////////////////////
+            this.$router.push('/pays/result');
         },
-        goHome(){
-            this.$router.push('/');
+        othersClick(e){
+          e.target.parentElement.style.backgroundColor = '#5e2d1a' ;
+          e.target.parentElement.style.color = 'white';
         },
 
         /////////////////////////// 타이머 //////////////////////////////////

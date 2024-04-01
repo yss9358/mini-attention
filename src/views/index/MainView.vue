@@ -6,8 +6,8 @@
         </div>
         
         <div class="mainBtn">   
-            <button type="button" v-on:click="inCafe">매장</button>
-            <button type="button" v-on:click="outCafe">포장</button>
+            <button type="button" v-on:click="goOrder">매장</button>
+            <button type="button" v-on:click="goOrder">포장</button>
         </div>
     </div>
 </div>
@@ -27,31 +27,8 @@ export default{
         };
     },
     methods : {
-        // 매장버튼 클릭했을 때 
-        inCafe(){
-            this.where = '1';
-            console.log(this.where);
-            // 데이터 1 넘기고 페이지 이동
-            // this.$router.push({
-            //     path : '/',
-            //     query : {
-            //         where : this.where
-            //     }
-            // });
-            
-        },
-        
-        // 포장버튼 클릭했을 때 
-        outCafe(){
-            this.where = '2';
-            console.log(this.where);
-            // this.$router.push({
-            //     path : '/',
-            //     query : {
-            //         where : this.where
-            //     }
-            // });
-            // 데이터 2넘기고 페이지 이동
+        goOrder(){
+            this.$router.push('/');
         },
 
         // 매니저아이콘 클릭했을 때 
