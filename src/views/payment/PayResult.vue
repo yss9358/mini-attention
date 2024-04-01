@@ -8,7 +8,7 @@
         <div class="card-box">
             <img class="receiptImg" src="../../assets/images/receipt.png">
             <div class="receiptList">
-                <p> {{ this.$store.state.payType }}결제 - 결제 완료</p>
+                <p> {{ this.$store.state.place }} 주문 - {{ this.$store.state.payMethod }}결제</p>
                 <div class="order-receipt">
                     <table class="orderList">
                         <colgroup>
@@ -39,7 +39,7 @@
                 </span>
                 <!-- finMsg -->
                 <span  class="pointMsg">
-                    보유 포인트 : 2,000 점 
+                    보유 포인트 : {{ this.outPoint}} 점 
                 </span>
                 <!-- pointMsg -->
             </div>
@@ -76,7 +76,8 @@ export default{
             resTimeData : '',
             message : "", // 결제 종류
             totalPrice : '0', // 결제한 금액 총합
-            outPrice : "",
+            outPrice : "", // 총합이 보여질 문자열
+            outPoint : "", // 보유포인트 보여질 문자열
             orderList : [
                 {
                     name : '아메리카노',
@@ -137,16 +138,9 @@ export default{
             let total = this.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
             this.outPrice = total;
         },
-        messageChange (){
-            if(this.$route.query.no == '1'){
-                this.message = "카드";
-            } else if (this.$route.query.no == '2'){
-                this.message = "모바일";
-            } else if(this.$route.query.no == '3') {
-                this.message = "기타";
-            } else {
-                this.message = ""
-            }
+        getPoint(){
+            let point = this.$store.state.point;
+            this.outPoint = point.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
         },
         /////////////////////////////////////// 타이머 ///////////////////////////////////////
         // 타이머 data에 timeCounter : 초 , restTimeData : "" 작성
@@ -177,8 +171,8 @@ export default{
          /////////////////////////////////////// 타이머 ///////////////////////////////////////
     },    
     created (){
+        this.getPoint();
         this.start();
-        this.messageChange();
         this.plus();
     }
 }

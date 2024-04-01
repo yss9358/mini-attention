@@ -6,8 +6,8 @@
         </div>
         
         <div class="mainBtn">   
-            <button type="button" v-on:click="goOrder">매장</button>
-            <button type="button" v-on:click="goOrder">포장</button>
+            <button type="button" v-on:click="inStore">매장</button>
+            <button type="button" v-on:click="takeOut">포장</button>
         </div>
     </div>
 </div>
@@ -29,7 +29,12 @@ export default{
         };
     },
     methods : {
-        goOrder(){
+        inStore(){
+            this.$store.commit('setPlace','매장');
+            this.$router.push('/');
+        },
+        takeOut(){
+            this.$store.commit('setPlace','포장');
             this.$router.push('/');
         },
 
@@ -42,7 +47,8 @@ export default{
 
     },
     created (){
-        this.$store.commit('setPayType', null);
+        this.$store.commit('setPlace',null);
+        this.$store.commit('setPay', null);
     }
 
 }

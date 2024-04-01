@@ -69,7 +69,6 @@ export default{
     },
     methods : {
         goResult(){
-            this.$store.commit("setPayType", "기타");
             this.$router.push('/pays/result');
         },
         othersClick(e){
@@ -105,10 +104,9 @@ export default{
 		}
         /////////////////////////// 타이머끝 //////////////////////////////////
 
-        
-
     },
     created (){
+        this.$store.commit("setPay", "기타");
         this.start();
     }
 }

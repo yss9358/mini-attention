@@ -6,17 +6,26 @@ export default createStore({
         return {
             authUser : null,
             token : null,
-            payType : ""
+            payMethod : "",
+            place : "",
+            point : ""
         };  
     },
     mutations: {
-        setPayType(state,payload){
-            state.payType = payload;
+        setPay(state,payload){
+            state.payMethod = payload;
+        },
+        setPlace(state,payload){
+            state.place = payload;
+        },
+        setPoint(state,point){
+            state.point = point
         }
+        
     },
     plugins: [
         createPersistedState({
-            paths: ['authUser', 'token', 'payType']
+            paths: ['authUser', 'token', 'payMethod']
         })
     ]
 });

@@ -45,7 +45,6 @@ export default{
     methods : {
         // 결제 페이지 이동
         goResult(){
-            this.$store.commit("setPayType", "카드");
             this.$router.push('/pays/result');
         },/// 결제 페이지 이동 ////
 
@@ -79,6 +78,7 @@ export default{
         /////////////////////////// 타이머끝 //////////////////////////////////
     },
     created (){
+        this.$store.commit("setPay", "카드");
         this.start(); // 페이지 시작하면 타이머 돌아감
     }
 }
