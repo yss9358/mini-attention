@@ -6,7 +6,7 @@
         </div>
         <div class="card-box">
             <div class="barcodeScan">
-                <img v-bind:src="barcodeImg" v-on:click="goResult">
+                <img v-bind:src="barcodeImg" v-on:click="goResult" data-no="1">
             </div>
             
             <ul class="otherPay">
@@ -19,13 +19,14 @@
             
             <!-- barcodeScan -->
             <div class="text-others">
+                <span class="modal-message">바코드를 입력해주세요</span><br>
                 <div class="timer">
                     <span class="big">{{ timeCounter }}</span>초 후 주문이 취소됩니다.<br>
                     <!-- 시간초가 지나갈동안 결제가 안되면 메인으로 돌아감 -->
                     <!-- 결제가 완료되면 payresult로 감 -->     
                 </div><br>
                 <!-- timer -->
-                <span class="modal-message">바코드를 입력해주세요</span><br>
+                
                 <router-link to="/" class="cancelBtn">주문 취소</router-link>
             </div>
             <!-- text-others -->
@@ -68,7 +69,7 @@ export default{
     },
     methods : {
         goResult(){
-            console.log("승인");
+            this.$store.commit("setPayType", "기타");
             this.$router.push('/pays/result');
         },
         othersClick(e){

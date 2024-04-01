@@ -20,7 +20,9 @@ import '@/assets/css/main.css'
 
 export default{
     name : 'MainView',
-    components : {},
+    components : {
+        
+    },
     data() {
         return {
             where : '' // 매장, 포장 버튼 클릭시 보낼 데이터
@@ -40,7 +42,7 @@ export default{
 
     },
     created (){
-
+        this.$store.commit('setPayType', null);
     }
 
 }

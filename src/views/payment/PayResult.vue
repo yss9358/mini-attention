@@ -8,32 +8,34 @@
         <div class="card-box">
             <img class="receiptImg" src="../../assets/images/receipt.png">
             <div class="receiptList">
-                <p>결제 완료</p>
-                <table  class="orderList">
-                    <colgroup>
-                        <col style="width: 220px;">
-                        <col style="width: 80px;">
-                        <col style="width: 120px;">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>상품명</th>
-                            <th>수량</th>
-                            <th>금액</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(list, i) in orderList" v-bind:key="i">
-                            <td>{{ list.name }}</td>
-                            <td>{{ list.count }}</td>
-                            <td>{{ list.price }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p> {{ this.$store.state.payType }}결제 - 결제 완료</p>
+                <div class="order-receipt">
+                    <table class="orderList">
+                        <colgroup>
+                            <col style="width: 220px;">
+                            <col style="width: 80px;">
+                            <col style="width: 120px;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>상품명</th>
+                                <th>수량</th>
+                                <th>금액</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(list, i) in orderList" v-bind:key="i">
+                                <td>{{ list.name }}</td>
+                                <td>{{ list.count }}</td>
+                                <td>{{ list.price }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div><!--receipt-->
             <div class="payMsg">
                 <span class="finMsg" >
-                    결제 금액 : 21,000 원 ,
+                    결제 금액 : {{ this.outPrice }} 원 ,
                 </span>
                 <!-- finMsg -->
                 <span  class="pointMsg">
@@ -50,7 +52,7 @@
                 <span class="big">{{ timeCounter }}</span>초 후 처음화면으로 돌아갑니다.
             </div>
             <!-- timer -->
-            <router-link class="goHome" to="/" >처음화면으로 돌아가기</router-link>
+            <router-link class="goHome" to="/">처음화면으로 돌아가기</router-link>
         </div>
         <!-- text-result -->
     </div>
@@ -62,7 +64,7 @@
 <script>
 import '@/assets/css/attention.css';
 import '@/assets/css/pay.css';
-
+import '@/assets/css/scrollbar.module.css'
 
 
 export default{
@@ -72,6 +74,9 @@ export default{
         return {
             timeCounter : 30,
             resTimeData : '',
+            message : "", // 결제 종류
+            totalPrice : '0', // 결제한 금액 총합
+            outPrice : "",
             orderList : [
                 {
                     name : '아메리카노',
@@ -83,11 +88,66 @@ export default{
                     count : 5,
                     price : 3000
                 }
+                ,
+                {
+                    name : '라떼',
+                    count : 5,
+                    price : 3000
+                },
+                {
+                    name : '라떼',
+                    count : 5,
+                    price : 3000
+                },
+                {
+                    name : '라떼',
+                    count : 5,
+                    price : 3000
+                },
+                {
+                    name : '라떼',
+                    count : 5,
+                    price : 3000
+                },
+                {
+                    name : '라떼',
+                    count : 5,
+                    price : 3000
+                },
+                {
+                    name : '라떼',
+                    count : 5,
+                    price : 3000
+                },
+                {
+                    name : '라떼',
+                    count : 5,
+                    price : 3000
+                }
             ]
         };
     },
     methods : {
-       
+        plus(){
+            let count = 0;
+            for(let i=0; i<this.orderList.length; i++){
+                count += (this.orderList[i].count)*(this.orderList[i].price);
+            } 
+            this.totalPrice = Number(count);
+            let total = this.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
+            this.outPrice = total;
+        },
+        messageChange (){
+            if(this.$route.query.no == '1'){
+                this.message = "카드";
+            } else if (this.$route.query.no == '2'){
+                this.message = "모바일";
+            } else if(this.$route.query.no == '3') {
+                this.message = "기타";
+            } else {
+                this.message = ""
+            }
+        },
         /////////////////////////////////////// 타이머 ///////////////////////////////////////
         // 타이머 data에 timeCounter : 초 , restTimeData : "" 작성
         start(){
@@ -118,6 +178,8 @@ export default{
     },    
     created (){
         this.start();
+        this.messageChange();
+        this.plus();
     }
 }
 </script>

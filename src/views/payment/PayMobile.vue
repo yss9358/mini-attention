@@ -38,14 +38,13 @@ export default{
         return {
             timeCounter : 30, // 타이머 시간초
             resTimeData : '', // 남은시간 표기 
-            point : '', // 포인트 적립여부 데이터
             payMessage : '모바일 쿠폰 찍으라고' // 안내 메세지 
         };
     },
     methods : {
         // 결제 페이지 이동
         goResult(){
-            console.log("승인");
+            this.$store.commit("setPayType", "모바일 쿠폰");
             this.$router.push('/pays/result');
         },/// 결제 페이지 이동 ////
 

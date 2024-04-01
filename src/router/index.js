@@ -31,7 +31,6 @@ const routes = [
     name : '/pays/mobile',
     component : PayMobile
   }
-
 ]
 
 const router = createRouter({

@@ -50,7 +50,12 @@
     margin-top: -50px;
 }
 .text-card .timer {
+    font-size : 20px;
     margin-bottom: 15px;
+}
+.text-card .timer .big {
+    font-weight: bold;
+    font-size: 45px;
 }
 .text-card .cancelBtn {
     margin : 20px auto ;
@@ -90,7 +95,12 @@
     margin-top: -15px;
 }
 .text-mobile .timer {
+    font-size : 20px;
     margin-bottom: 10px;
+}
+.text-mobile .timer .big {
+    font-weight: bold;
+    font-size: 45px;
 }
 .text-mobile .cancelBtn {
     margin: 20px auto ;
@@ -126,13 +136,13 @@
     text-align: center;
     width: 150px;
     height: 150px;
-    margin : 0px 30px ;
+    margin : 0px 10px ;
     cursor: pointer;
     background-color: #fff;
 }
 /* 리스트 안에 이미지들*/
 .card-container .otherPay .payTable img{
-    width: 100px;    
+    width: 100px;   
     display: inline;
 }
 .card-container .otherPay .payTable p{
@@ -155,7 +165,7 @@
     color: #000;
     cursor : pointer;  
     padding : 10px 10px;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 .text-others .cancelBtn:hover{
     background-color: #5e2d1a;
@@ -176,16 +186,23 @@
 .modal-message {  
     text-align: center;
     display: inline-block;
+    margin-bottom: 30px;
 }
 /* 다른결제수단에서 텍스트 */
 .card-container .text-others{
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 .card-container .text-others .timer{
-    margin-bottom: 15px;
+    margin-bottom: -20px;
+    font-size: 20px;
+}
+.text-others .timer .big {
+    font-weight: bold;
+    font-size: 45px;
 }
 .card-container .text-others .cancelBtn {
-    margin-top: 15px;
+    margin-top: 0px;
 }
 
 /****************************************************************/
@@ -204,13 +221,33 @@
     text-align: center;
     margin : 0px auto;
 }
+.receiptList>p{
+    position: sticky;
+    top : 0px;
+}
 .receiptList .orderList {
     margin-top: 20px;
     font-size: 25px;
     border-bottom: 1px solid #000;
     margin-left: 30px;
     padding-bottom: 10px;
+    
 }
+.receiptList .orderList:last-child {
+    padding: 0 0 20px 0;
+}
+
+
+.order-receipt {
+    max-height: 300px;
+    overflow-y: auto;
+    
+}
+.order-receipt thead {
+    /* position: sticky; */
+    top : 20px;
+}
+
 /* 결제완료 메세지 */
 .receiptList p {
     width: 420px;
@@ -219,7 +256,8 @@
     font-weight: bold;
     border-top: 3px solid #000000;
     border-bottom: 3px solid #000000;
-    margin: 20px auto 0 30px;
+    /* margin: 20px auto 0 30px; */
+    margin:  0px auto;
     padding-top : 20px;
     padding-bottom: 20px;
 }
@@ -230,11 +268,13 @@
     font-size : 20px;
     font-weight : bold;
 }
+
+
 /* 타이머 */
 .text-result .timer { /* 남은시간 표시되는 부분*/
     /* border: 1px solid #000; */
     margin : 0px auto 20px auto;
-    display: inline-block;
+    display: block;
     font-size: 20px;
     text-align: center;
 }

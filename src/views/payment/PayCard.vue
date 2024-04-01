@@ -45,7 +45,7 @@ export default{
     methods : {
         // 결제 페이지 이동
         goResult(){
-            console.log("승인");
+            this.$store.commit("setPayType", "카드");
             this.$router.push('/pays/result');
         },/// 결제 페이지 이동 ////
 
