@@ -8,10 +8,9 @@
 }
 .managerMenu .managerBtn{ /* 매니저아이콘 */
     width: 50px;
-    margin-left: 1150px;
+    margin-left: 750px;
     cursor: pointer;
 }
-
 
 /* 매장 포장 버튼 */
 .mainBtn{ /* 매장 포장 버튼 박스 */

@@ -1,19 +1,25 @@
 <template>
 <div class="wrap">
     <div class="card-container">
+        <div class="pays-logo">
+            <img src="../../assets/images/attention.png">
+        </div>
         <div class="card-box">
-            <img src="../../assets/images/creditcard.png" v-on:click="goResult"><br>
-            <div class="timer">
-                <span class="big">{{ timeCounter }}</span>초가 지나면 주문이 취소됩니다.
-                <!-- 시간초가 지나갈동안 결제가 안되면 메인으로 돌아감 -->
-                <!-- 결제가 완료되면 payresult로 감 -->
+            <img class="creditCard" src="../../assets/images/creditcard.png" v-on:click="goResult"><br>
+            <div class="text-card">
+                <div class="timer">
+                    <span class="big">{{ timeCounter }}</span>초 후 주문이 취소됩니다.<br>
+                    <!-- 시간초가 지나갈동안 결제가 안되면 메인으로 돌아감 -->
+                    <!-- 결제가 완료되면 payresult로 감 -->
+                </div>
+                <!-- timer --> 
+                <div class="cardMsg">
+                    {{ payMessage }}
+                </div>
+                <router-link to="/" class="cancelBtn">주문 취소</router-link>
+                <!-- 안내메세지 -->
             </div>
-            <!-- timer -->
-            
-            <div>
-                {{ payMessage }}
-            </div>
-            <!-- 안내메세지 -->
+            <!-- text-card -->
         </div>
         <!-- card-box -->
     </div>
@@ -31,13 +37,14 @@ export default{
     components : {},
     data(){
         return {
-            timeCounter : 10, // 타이머 시간초
+            timeCounter : 30, // 타이머 시간초
             resTimeData : '', // 남은시간 표기 
             point : '', // 포인트 적립여부 데이터
             payMessage : '카드를 여기다가 넣으라고' // 안내 메세지 
         };
     },
     methods : {
+        // 결제 페이지 이동
         goResult(){
             console.log("승인");
             ////////// 반복문 작성 자리//////////////
@@ -58,17 +65,17 @@ export default{
                     point : 2
                 }
             });
-            ////////////////////////////////////////
-        },
+        },/// 결제 페이지 이동 ////
+
 
         /////////////////////////// 타이머 //////////////////////////////////
         // 타이머 data에 timeCounter : 초 , restTimeData : "" 작성
         start(){
 			// 1초에 한번씩 start 호출
 			this.polling = setInterval( () =>{
-				this.timeCounter-- ;//1씩 감소
-				this.resTimeData = this.prettyTime();
-				if (this.timeCounter <= 0) this.timeStop(); 
+			this.timeCounter-- ;//1씩 감소
+			this.resTimeData = this.prettyTime();
+			if (this.timeCounter <= 0) this.timeStop(); 
 			},1000)  
 		},
 		// 시간 형식으로 변환 리턴

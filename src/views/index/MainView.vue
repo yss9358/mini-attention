@@ -32,6 +32,12 @@ export default{
             this.where = '1';
             console.log(this.where);
             // 데이터 1 넘기고 페이지 이동
+            // this.$router.push({
+            //     path : '/',
+            //     query : {
+            //         where : this.where
+            //     }
+            // });
             
         },
         
@@ -39,6 +45,12 @@ export default{
         outCafe(){
             this.where = '2';
             console.log(this.where);
+            // this.$router.push({
+            //     path : '/',
+            //     query : {
+            //         where : this.where
+            //     }
+            // });
             // 데이터 2넘기고 페이지 이동
         },
 
@@ -46,6 +58,7 @@ export default{
         manageBtn(){
             console.log("manageBtn");
             // 관리자 페이지로 이동 
+            // this.$router.push('/');
         }
 
     },

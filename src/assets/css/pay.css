@@ -1,151 +1,256 @@
 /*************payment**********/
 
-.card-container { /* 전체 배경 */
-    width: 1200px;
-    height: 953px;
-    background-color: rgba(0, 0, 0, 0.227);
+/* 전체 배경 */
+.card-container { 
+    width: 805px;
+    height: 100vh;
+    background-color: #fff;
     /* border: 1px solid #000; */
     text-align: center;
     font-size: 42px;
 }
-.card-box { /* 모달창 나오는 부분 배경*/
-    /* border: 1px solid #000; */
-    width: 1000px;
-    height: 700px;
-    background-color: #fff;
-    border-radius: 25px;
+/* 모달창 나오는 부분 배경*/
+.card-box { 
     display: inline-block;
-    margin : 120px auto;
+    margin : 70px auto 30px auto;
+}
+/* 페이지 헤더 로고 */
+.pays-logo{
+    background-color: #5e2d1a;
+}
+/* 페이지 헤더 로고 이미지*/
+.pays-logo img{
+    width: 270px;
+    height: 100px;
+    margin: 0px auto;
+    display: block;
+    padding-top: 8px;
+    
+}
+
+/* 주문취소 버튼 마우스 올렸을 때 */
+.cancelBtn:hover {
+    background-color: #5e2d1a;
+    color: #fff;
 }
 
 /***************************************/
 
 /*  payCard */
-
-.card-box img { /* 카드 모양 이미지  */
-    width: 800px;
-    height: 450px;
-    margin: 30px 0 0 0;
+/****************************************************************/
+/* 카드 모양 이미지  */
+.card-box .creditCard { 
+    width: 700px;
+    height: 500px;
     object-fit: cover;
 }
 
-/* payOthers 카드 모달창 */
+/* 카드결제 이미지 아래 텍스트들*/
+.text-card{ 
+    margin-top: -50px;
+}
+.text-card .timer {
+    margin-bottom: 15px;
+}
+.text-card .cancelBtn {
+    margin : 20px auto ;
+}
+.text-card .cancelBtn:hover{
+    background-color: #5e2d1a;
+    color: #fff;
+}
 
-.modal{ /* 모달 전체 */
-    width: 100%;
-    height: 100%;
+/*  카드에서 주문 취소 버튼*/
+.text-card .cancelBtn {
+    border: 1px solid none;
+    background-color: #FED900;
     display: block;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 999;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.466);
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 80px;
+    color: #000;
+    cursor : pointer;  
+    padding : 10px 10px;
 }
-.modal .modalColse{ /*  x 버튼 */
-    background-color: #fff;
+/****************************************************************/
+
+/* paymobile */
+/****************************************************************/
+
+/* 바코드 이미지 */
+.card-box .mobileCoupon{
+    width: 500px;
+    height: 550px;
+    margin-top: -60px;
+}
+/* 바코드 이미지 아래 텍스트들 */
+.text-mobile {
+    margin-top: -15px;
+}
+.text-mobile .timer {
+    margin-bottom: 10px;
+}
+.text-mobile .cancelBtn {
+    margin: 20px auto ;
+    border: 1px solid none;
+    background-color: #FED900;
+    display: block;
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 80px;
+    color: #000;
+    cursor : pointer;  
+    padding : 10px 10px;
+}
+.text-mobile .cancelBtn:hover{
+    background-color: #5e2d1a;
+    color: #fff;
+}
+/****************************************************************/
+
+
+/* payOthers  */
+/****************************************************************/
+
+/* 결제수단 고르는 부분 관련*/
+.card-box .otherPay {
+    margin: 70px auto 30px auto  ;
+}
+.card-container .otherPay .payTable {
     border: none;
-    color: #ff6161;
-    font-size: 40px;
-    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    margin : 0px 30px ;
     cursor: pointer;
-    margin-left: 140px;
+}
+/* 리스트 안에 이미지들*/
+.card-container .otherPay .payTable img{
+    width: 100px;    
+    display: inline;
+}
+.card-container .otherPay .payTable p{
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: '맑은 고딕';
 }
 
-.modal-massge {  /* 바코드입력메세지 */
-    margin-left: 180px;
+/* payothers 에서 주문 취소버튼 */
+ .text-others .cancelBtn {
+    border: 1px solid none;
+    background-color: #FED900;
+    display: block;
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 80px;
+    color: #000;
+    cursor : pointer;  
+    padding : 10px 10px;
+    margin: 20px auto;
+}
+.text-others .cancelBtn:hover{
+    background-color: #5e2d1a;
+    color: #fff;
 }
 
-.modal .modal-content{
-    width: 800px;
-    height: 800px;
-    border: 1px solid #888888;
-    border-radius: 50px;
-    background-color: #ffffff;
-    padding: 40px 20px 20px 20px;
-    margin: 100px auto;
+/* 바코드 이미지 관련 */
+.barcodeScan {
+    width: 700px;
+    height: 300px;
+    margin-top: -80px;
+}
+.card-container .barcodeScan>img{
+    width: 600px;
+    height: 400px;
+}
+/* 바코드 입력메세지 */
+.modal-message {  
+    text-align: center;
+    display: inline-block;
+}
+/* 다른결제수단에서 텍스트 */
+.card-container .text-others{
+    margin-top: 10px;
+}
+.card-container .text-others .timer{
+    margin-bottom: 15px;
+}
+.card-container .text-others .cancelBtn {
+    margin-top: 15px;
+}
+
+/****************************************************************/
+
+
+/*payResult*/
+/****************************************************************/
+/* 영수증 이미지*/
+.card-box .receiptImg {
+    display: inline-block;
+    width: 100px;
+    margin: -50px 0 0 0;
+}
+/* 주문 내역 표 */
+.receiptList {
+    text-align: center;
+    margin : 0px auto;
+}
+.receiptList .orderList {
+    margin-top: 20px;
+    font-size: 25px;
+    border-bottom: 1px solid #000;
+    margin-left: 30px;
+    padding-bottom: 10px;
+}
+/* 결제완료 메세지 */
+.receiptList p {
+    width: 420px;
     text-align: center;
     font-size: 30px;
     font-weight: bold;
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid #000000;
+    margin: 20px auto 0 30px;
+    padding-top : 20px;
+    padding-bottom: 20px;
 }
-.modal .modal-content p{
-    width: 400px;
-    margin: 0px auto;
-
-}
-
-/* 결제수단 고르는 부분 관련*/
-.modal .otherPay .payTable {
-    border: 1px solid #000;
-    display: inline-block;
+/* 결제 완료 메세지 */
+.payMsg {
+    margin: 20px 0 0 0 ;
     text-align: center;
-    width: 200px;
-    height: 200px;
+    font-size : 20px;
+    font-weight : bold;
 }
-
-.modal .otherPay .payTable img{
-    width: 150px;    
-    display: inline;
-}
-
-.modal .otherPay .payTable p{
-    text-align: left;
-    display: inline-block;
-    margin-left: 35px;
-}
-/*
-.modal .ortherPay>button{
-    border: 1px solid #adadad;
-    background-color: #fff;
-    border-radius: 30px;
-    margin: 30px 10px 30px 10px;
-    padding: 5px 5px 10px 5px;
-}
-*/
-/*
-.modal .ortherPay>button>p{
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.modal .ortherPay>button:hover{
-    background-color: #adadad;
-}
-*/
-
-/* 바코드 이미지 관련 */
-.modal .modal-content .barcodeScan>img{
-    width: 400px;
-    height: 400px;
-}
-
-
-
-
-
-/**********************************************/
-
-/*payResult*/
-
-.payMsg { /* 결제 완료 메세지 나오는 부분 */
-    border: 1px solid #000;
-    margin: 200px 0 0 0;
-    width: auto;
-    height: 200px;
-}
-.payMsg .finMsg {
-    font-size: 50px;
-}
-
-.goHome { /* 처음화면으로 돌아가기 나오는 부분 */
+/* 타이머 */
+.text-result .timer { /* 남은시간 표시되는 부분*/
     /* border: 1px solid #000; */
+    margin : 0px auto 20px auto;
+    display: inline-block;
+    font-size: 20px;
+    text-align: center;
+}
+
+.text-result .timer .big {
+    font-weight: bold;
+    font-size: 45px;
+}
+
+/* 처음화면으로 돌아가기 나오는 부분 */
+.goHome { 
     border-radius: 30px;
-    width: 700px;
-    /* background-color: #DCF4FF; */
+    width: 600px;
     background-color: #FED900;
     display: inline-block;
-    margin : 50px 0 0 0;
-    padding : 20px 0 ;
+    margin : 0 0 0 0;
+    padding : 10px 0 ;
     font-size: 50px;
     font-weight: bold;
     color: #000;
@@ -154,16 +259,4 @@
     color: #fff;
     background-color: #5e2d1a;
 }
-
-.timer { /* 남은시간 표시되는 부분*/
-    /* border: 1px solid #000; */
-    margin : 30px auto 0 auto;
-    display: inline-block;
-    font-size: 25px;
-    text-align: center;
-}
-.timer .big {
-    font-size: 45px;
-}
-
-/**********************************************/
+/****************************************************************/

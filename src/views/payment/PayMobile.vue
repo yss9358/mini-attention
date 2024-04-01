@@ -5,68 +5,45 @@
             <img src="../../assets/images/attention.png">
         </div>
         <div class="card-box">
-            <div class="barcodeScan">
-                <img v-bind:src="barcodeImg" v-on:click="goResult">
-            </div>
-            
-            <div class="otherPay">
-                <div class="payTable" v-for="(list,i) in payTable" v-bind:key="i" v-on:click="red" >
-                    <img v-bind:src="list.src">
-                    <p>{{ list.name }}</p>
-                </div>
-            </div>
-            <!-- ortherPay -->
-            
-            <!-- barcodeScan -->
-            <div class="text-others">
+            <img class="mobileCoupon" src="../../assets/images/pay1.png" v-on:click="goResult"><br>
+            <div class="text-mobile">
                 <div class="timer">
                     <span class="big">{{ timeCounter }}</span>초 후 주문이 취소됩니다.<br>
                     <!-- 시간초가 지나갈동안 결제가 안되면 메인으로 돌아감 -->
-                    <!-- 결제가 완료되면 payresult로 감 -->     
-                </div><br>
-                <!-- timer -->
-                <span class="modal-message">바코드를 입력해주세요</span><br>
+                    <!-- 결제가 완료되면 payresult로 감 -->
+                </div>
+                <!-- timer --> 
+                <div>
+                    {{ payMessage }}
+                </div>
                 <router-link to="/" class="cancelBtn">주문 취소</router-link>
             </div>
-            <!-- text-others -->
+            <!-- text-mobile -->
         </div>
         <!-- card-box -->
     </div>
     <!-- card-container -->
 </div>
-<!-- wrap -->
+<!-- wrap -->    
 </template>
 
 <script>
-import '@/assets/css/attention.css'
-import '@/assets/css/pay.css'
+import '@/assets/css/attention.css';
+import '@/assets/css/pay.css';
 
 export default{
-    name : 'PayOthers',
+    name : 'PayCard',
     components : {},
     data(){
         return {
-            barcodeImg : require('../../assets/images/barcode.png'), // 바코드 이미지
             timeCounter : 30, // 타이머 시간초
             resTimeData : '', // 남은시간 표기 
-
-            payTable : [ // 결제수단 이미지 
-                { // 삼성페이
-                    name: '삼성페이', 
-                    src : require('../../assets/images/samsungpay.png')
-                },
-                { // 네이버페이
-                    name : '네이버페이',
-                    src : require('../../assets/images/naverpay.png')
-                },
-                { // 카카오페이
-                    name : '카카오페이',
-                    src : require('../../assets/images/kakaopay.png')
-                }
-            ]
+            point : '', // 포인트 적립여부 데이터
+            payMessage : '모바일 쿠폰 찍으라고' // 안내 메세지 
         };
     },
     methods : {
+        // 결제 페이지 이동
         goResult(){
             console.log("승인");
             ////////// 반복문 작성 자리//////////////
@@ -87,11 +64,8 @@ export default{
                     point : 2
                 }
             });
-            ////////////////////////////////////////
-        },
-        goHome(){
-            this.$router.push('/');
-        },
+        },/// 결제 페이지 이동 ////
+
 
         /////////////////////////// 타이머 //////////////////////////////////
         // 타이머 data에 timeCounter : 초 , restTimeData : "" 작성
@@ -120,15 +94,11 @@ export default{
             // this.$router.push('/'); // 시간이 0 되면 자동으로 메인페이지로 감
 		}
         /////////////////////////// 타이머끝 //////////////////////////////////
-
-        
-
     },
     created (){
-        this.start();
+        this.start(); // 페이지 시작하면 타이머 돌아감
     }
 }
-
 </script>
 
 <style>

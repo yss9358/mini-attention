@@ -1,26 +1,58 @@
 <template>
 <div class="wrap">
     <div class="card-container">
+        <div class="pays-logo">
+            <img src="../../assets/images/attention.png">
+        </div>
+        <!-- pays-logo -->
         <div class="card-box">
+            <img class="receiptImg" src="../../assets/images/receipt.png">
+            <div class="receiptList">
+                <p>결제 완료</p>
+                <table  class="orderList">
+                    <colgroup>
+                        <col style="width: 220px;">
+                        <col style="width: 80px;">
+                        <col style="width: 120px;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>상품명</th>
+                            <th>수량</th>
+                            <th>금액</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(list, i) in orderList" v-bind:key="i">
+                            <td>{{ list.name }}</td>
+                            <td>{{ list.count }}</td>
+                            <td>{{ list.price }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!--receipt-->
             <div class="payMsg">
-                <div class="finMsg" >
-                    결제 완료됨ㅇㅇ
-                </div>
+                <span class="finMsg" >
+                    결제 금액 : 21,000 원 ,
+                </span>
                 <!-- finMsg -->
-                <br>
-                <div  class="pointMsg">
-                    포인트가 적립됨ㅇㅇ (보유포인트 : 1000)
-                </div>
+                <span  class="pointMsg">
+                    보유 포인트 : 2,000 점 
+                </span>
                 <!-- pointMsg -->
             </div>
             <!-- payMsg -->
+            
+        </div>
+        <!-- card-box -->
+        <div class="text-result">
             <div class="timer">
-                    <span class="big">{{ timeCounter }}</span>초 후 처음화면으로 돌아갑니다.
+                <span class="big">{{ timeCounter }}</span>초 후 처음화면으로 돌아갑니다.
             </div>
             <!-- timer -->
             <router-link class="goHome" to="/" >처음화면으로 돌아가기</router-link>
         </div>
-        <!-- card-box -->
+        <!-- text-result -->
     </div>
     <!-- card-container -->
 </div>
@@ -40,8 +72,19 @@ export default{
         return {
             timeCounter : 30,
             resTimeData : '',
-            param : this.$route.params.point // 적립여부 데이터  1이면 적립함 2면 적립안함
-            
+            param : this.$route.params.point, // 적립여부 데이터  1이면 적립함 2면 적립안함
+            orderList : [
+                {
+                    name : '아메리카노',
+                    count : 2,
+                    price : 3000
+                },
+                {
+                    name : '라떼',
+                    count : 5,
+                    price : 3000
+                }
+            ]
         };
     },
     methods : {
