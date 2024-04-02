@@ -4,8 +4,14 @@ import PayCard from '@/views/payment/PayCard.vue'
 import PayResult from '@/views/payment/PayResult.vue'
 import PayOthers from '@/views/payment/PayOthers.vue'
 import PayMobile from '@/views/payment/PayMobile.vue'
+import MainSilde  from '@/views/index/MainSilde.vue'
 
 const routes = [
+  {
+    path : '/',
+    name : '/',
+    component : MainSilde
+  },
   {
     path : '/main',
     name : '/main',

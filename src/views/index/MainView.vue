@@ -1,8 +1,8 @@
 <template>
 
 <div class="wrap">
-    <div class="mainViewContainer">
 
+    <div class="mainViewContainer">
         <div class="managerMenu">
             <img class="managerBtn" src="../../assets/images/managerIcon.png" v-on:click="manageBtn">
         </div>
@@ -26,6 +26,7 @@
 <script>
 import '@/assets/css/attention.css'
 import '@/assets/css/mainpage.css'
+
 
 export default{
     name : 'MainView',
