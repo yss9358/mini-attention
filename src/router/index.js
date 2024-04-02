@@ -7,8 +7,8 @@ import PayMobile from '@/views/payment/PayMobile.vue'
 
 const routes = [
   {
-    path : '/',
-    name : '/',
+    path : '/main',
+    name : '/main',
     component : MainView
   },
   {

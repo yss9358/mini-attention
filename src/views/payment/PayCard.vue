@@ -1,9 +1,11 @@
 <template>
+    
 <div class="wrap">
     <div class="card-container">
-        <div class="pays-logo">
-            <img src="../../assets/images/attention.png">
-        </div>
+
+        <AppPayHeader/>
+        <!-- 로고부분 -->
+
         <div class="card-box">
             <img class="creditCard" src="../../assets/images/creditcard.png" v-on:click="goResult"><br>
             <div class="text-card">
@@ -13,38 +15,52 @@
                     <!-- 결제가 완료되면 payresult로 감 -->
                 </div>
                 <!-- timer --> 
+
                 <div class="cardMsg">
                     {{ payMessage }}
                 </div>
-                <router-link to="/" class="cancelBtn">주문 취소</router-link>
-                <!-- 안내메세지 -->
+                <!-- cardMsg 안내메세지  -->
+
+                <router-link to="/main" class="cancelBtn">뒤로 가기</router-link>
+                <router-link to="/main" class="cancelBtn">주문 취소</router-link>
+                
             </div>
             <!-- text-card -->
+
         </div>
         <!-- card-box -->
+
     </div>
     <!-- card-container -->
+
 </div>
 <!-- wrap -->    
+
 </template>
 
 <script>
 import '@/assets/css/attention.css';
-import '@/assets/css/pay.css';
+import '@/assets/css/payend.css';
+import AppPayHeader from '@/components/AppPayHeader.vue'
 
 export default{
     name : 'PayCard',
-    components : {},
+    components : {
+        AppPayHeader
+    },
     data(){
         return {
             timeCounter : 30, // 타이머 시간초
             resTimeData : '', // 남은시간 표기 
-            payMessage : '카드를 여기다가 넣으라고' // 안내 메세지 
+            payMessage : '카드를 넣어주세요' // 안내 메세지 
         };
     },
     methods : {
         // 결제 페이지 이동
         goResult(){
+            // 위에 두줄 삭제 
+            this.$store.commit('setSavePoint',5);
+            this.$store.commit('setUserVo',{no:2, hp:1325,point:700});
             this.$router.push('/pays/result');
         },/// 결제 페이지 이동 ////
 
@@ -73,12 +89,11 @@ export default{
 		},		
 		timeStop() {  
             clearInterval(this.polling);
-            this.$router.push('/'); // 시간이 0 되면 자동으로 메인페이지로 감
+            this.$router.push('/main'); // 시간이 0 되면 자동으로 메인페이지로 감
 		}
         /////////////////////////// 타이머끝 //////////////////////////////////
     },
     created (){
-        this.$store.commit("setPay", "카드");
         this.start(); // 페이지 시작하면 타이머 돌아감
     }
 }

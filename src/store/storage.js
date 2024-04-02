@@ -4,28 +4,30 @@ import createPersistedState from 'vuex-persistedstate';
 export default createStore({
     state() {
         return {
-            authUser : null,
-            token : null,
-            payMethod : "",
-            place : "",
-            point : ""
+            payment : '',
+            userVo : {
+                no : "",
+                point : "",
+                hp : ""
+            },
+            savePoint : ""
         };  
     },
     mutations: {
         setPay(state,payload){
-            state.payMethod = payload;
+            state.payment = payload;
         },
-        setPlace(state,payload){
-            state.place = payload;
+        setUserVo(state,payload){
+            state.userVo = payload;
         },
-        setPoint(state,point){
-            state.point = point
+        setSavePoint(state,payload){
+            state.savePoint = payload;
         }
         
     },
     plugins: [
         createPersistedState({
-            paths: ['authUser', 'token', 'payMethod']
+            paths: ['userVo', 'savePoint', 'payment']
         })
     ]
 });

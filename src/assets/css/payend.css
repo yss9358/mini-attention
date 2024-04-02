@@ -78,6 +78,8 @@
     color: #000;
     cursor : pointer;  
     padding : 10px 10px;
+    float: left;
+    margin : 20px 25px ;
 }
 /****************************************************************/
 
@@ -103,7 +105,7 @@
     font-size: 45px;
 }
 .text-mobile .cancelBtn {
-    margin: 20px auto ;
+    margin: 20px 25px ;
     border: 1px solid none;
     background-color: #FED900;
     display: block;
@@ -115,6 +117,7 @@
     color: #000;
     cursor : pointer;  
     padding : 10px 10px;
+    float: left;
 }
 .text-mobile .cancelBtn:hover{
     background-color: #5e2d1a;
@@ -202,10 +205,12 @@
     font-size: 45px;
 }
 .card-container .text-others .cancelBtn {
-    margin-top: 0px;
+    float: left;
+    margin : auto 25px ;
 }
 
 /****************************************************************/
+
 
 
 /*payResult*/
@@ -237,14 +242,11 @@
     padding: 0 0 20px 0;
 }
 
-
 .order-receipt {
     max-height: 300px;
     overflow-y: auto;
-    
 }
 .order-receipt thead {
-    /* position: sticky; */
     top : 20px;
 }
 
@@ -263,12 +265,17 @@
 }
 /* 결제 완료 메세지 */
 .payMsg {
-    margin: 20px 0 0 0 ;
+    margin: 30px 0 0 0 ;
     text-align: center;
     font-size : 20px;
     font-weight : bold;
 }
 
+/* 영수증 밑에 타이머 */
+.text-result {
+    width: 805px;
+    height: 180px;
+}
 
 /* 타이머 */
 .text-result .timer { /* 남은시간 표시되는 부분*/

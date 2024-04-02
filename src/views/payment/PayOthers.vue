@@ -1,14 +1,19 @@
 <template>
+
 <div class="wrap">
+
     <div class="card-container">
-        <div class="pays-logo">
-            <img src="../../assets/images/attention.png">
-        </div>
+        
+        <AppPayHeader/>
+        <!-- 로고부분 -->
+
         <div class="card-box">
+
             <div class="barcodeScan">
                 <img v-bind:src="barcodeImg" v-on:click="goResult" data-no="1">
             </div>
-            
+            <!-- barcodeScan -->
+
             <ul class="otherPay">
                 <li class="payTable" v-for="(list,i) in payTable" v-bind:key="i" v-on:click="othersClick" >
                     <img v-bind:src="list.src">
@@ -16,40 +21,51 @@
                 </li>
             </ul>
             <!-- ortherPay -->
-            
-            <!-- barcodeScan -->
+
             <div class="text-others">
-                <span class="modal-message">바코드를 입력해주세요</span><br>
+
+                <span class="modal-message">{{ payMessage }}</span><br>
+
                 <div class="timer">
                     <span class="big">{{ timeCounter }}</span>초 후 주문이 취소됩니다.<br>
                     <!-- 시간초가 지나갈동안 결제가 안되면 메인으로 돌아감 -->
                     <!-- 결제가 완료되면 payresult로 감 -->     
                 </div><br>
                 <!-- timer -->
-                
-                <router-link to="/" class="cancelBtn">주문 취소</router-link>
+
+                <router-link to="/main" class="cancelBtn">뒤로 가기</router-link>
+                <router-link to="/main" class="cancelBtn">주문 취소</router-link>
+
             </div>
             <!-- text-others -->
+
         </div>
         <!-- card-box -->
+
     </div>
     <!-- card-container -->
+
 </div>
 <!-- wrap -->
+
 </template>
 
 <script>
 import '@/assets/css/attention.css'
-import '@/assets/css/pay.css'
+import '@/assets/css/payend.css'
+import AppPayHeader from '@/components/AppPayHeader.vue'
 
 export default{
     name : 'PayOthers',
-    components : {},
+    components : {
+        AppPayHeader
+    },
     data(){
         return {
-            barcodeImg : require('../../assets/images/barcode.png'), // 바코드 이미지
             timeCounter : 30, // 타이머 시간초
-            resTimeData : '', // 남은시간 표기 
+            resTimeData : '', // 남은시간 표기
+            barcodeImg : require('../../assets/images/barcode.png'), // 바코드 이미지
+            payMessage : "바코드를 가까이 대주세요", 
             changeColor : false,
             payTable : [ // 결제수단 이미지 
                 { // 삼성페이
@@ -100,13 +116,12 @@ export default{
 		},		
 		timeStop() {  
             clearInterval(this.polling);
-            // this.$router.push('/'); // 시간이 0 되면 자동으로 메인페이지로 감
+            this.$router.push('/main'); // 시간이 0 되면 자동으로 메인페이지로 감
 		}
         /////////////////////////// 타이머끝 //////////////////////////////////
 
     },
     created (){
-        this.$store.commit("setPay", "기타");
         this.start();
     }
 }

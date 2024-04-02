@@ -1,44 +1,59 @@
 <template>
+
 <div class="wrap">
     <div class="card-container">
-        <div class="pays-logo">
-            <img src="../../assets/images/attention.png">
-        </div>
+        
+        <AppPayHeader/>
+        <!-- 로고부분 -->
+
         <div class="card-box">
             <img class="mobileCoupon" src="../../assets/images/pay1.png" v-on:click="goResult"><br>
             <div class="text-mobile">
+                
                 <div class="timer">
                     <span class="big">{{ timeCounter }}</span>초 후 주문이 취소됩니다.<br>
                     <!-- 시간초가 지나갈동안 결제가 안되면 메인으로 돌아감 -->
                     <!-- 결제가 완료되면 payresult로 감 -->
                 </div>
                 <!-- timer --> 
+
                 <div>
                     {{ payMessage }}
                 </div>
-                <router-link to="/" class="cancelBtn">주문 취소</router-link>
+                <!-- payMessage -->
+
+                <router-link to="/main" class="cancelBtn">뒤로 가기</router-link>
+                <router-link to="/main" class="cancelBtn">주문 취소</router-link>
+
             </div>
             <!-- text-mobile -->
+
         </div>
         <!-- card-box -->
+
     </div>
     <!-- card-container -->
+
 </div>
 <!-- wrap -->    
+
 </template>
 
 <script>
 import '@/assets/css/attention.css';
-import '@/assets/css/pay.css';
+import '@/assets/css/payend.css';
+import AppPayHeader from '@/components/AppPayHeader.vue'
 
 export default{
     name : 'PayCard',
-    components : {},
+    components : {
+        AppPayHeader
+    },
     data(){
         return {
             timeCounter : 30, // 타이머 시간초
             resTimeData : '', // 남은시간 표기 
-            payMessage : '모바일 쿠폰 찍으라고' // 안내 메세지 
+            payMessage : '모바일 쿠폰을 가까이 대주세요' // 안내 메세지 
         };
     },
     methods : {
@@ -72,12 +87,11 @@ export default{
 		},		
 		timeStop() {  
             clearInterval(this.polling);
-            this.$router.push('/'); // 시간이 0 되면 자동으로 메인페이지로 감
+            this.$router.push('/main'); // 시간이 0 되면 자동으로 메인페이지로 감
 		}
         /////////////////////////// 타이머끝 //////////////////////////////////
     },
     created (){
-        this.$store.commit("setPay", "모바일 쿠폰");
         this.start(); // 페이지 시작하면 타이머 돌아감
     }
 }
