@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MainView from '@/views/index/MainView.vue'
-import PayCard from '@/views/payment/PayCard.vue'
-import PayResult from '@/views/payment/PayResult.vue'
-import PayOthers from '@/views/payment/PayOthers.vue'
-import PayMobile from '@/views/payment/PayMobile.vue'
 import MainSilde  from '@/views/index/MainSilde.vue'
+import PayCard from '@/views/payment/PayCard.vue'
+import PayMobile from '@/views/payment/PayMobile.vue'
+import PayOthers from '@/views/payment/PayOthers.vue'
+import PayResult from '@/views/payment/PayResult.vue'
+
 
 const routes = [
   {
@@ -13,14 +13,14 @@ const routes = [
     component : MainSilde
   },
   {
-    path : '/main',
-    name : '/main',
-    component : MainView
-  },
-  {
     path: '/pays/card',
     name: '/pays/card',
     component: PayCard
+  },
+  {
+    path : '/pays/mobile',
+    name : '/pays/mobile',
+    component : PayMobile
   },
   {
     path : '/pays/others',
@@ -31,11 +31,6 @@ const routes = [
     path : '/pays/result',
     name : '/pays/result',
     component : PayResult
-  },
-  {
-    path : '/pays/mobile',
-    name : '/pays/mobile',
-    component : PayMobile
   }
 ]
 

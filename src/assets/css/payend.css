@@ -16,15 +16,14 @@
 }
 /* 페이지 헤더 로고 */
 .pays-logo{
-    background-color: #5e2d1a;
+    background-color: #31160b;
 }
 /* 페이지 헤더 로고 이미지*/
 .pays-logo img{
-    width: 270px;
+    width: 380px;
     height: 100px;
     margin: 0px auto;
     display: block;
-    padding-top: 8px;
     
 }
 

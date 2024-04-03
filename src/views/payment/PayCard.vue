@@ -21,8 +21,8 @@
                 </div>
                 <!-- cardMsg 안내메세지  -->
 
-                <router-link to="/main" class="cancelBtn">뒤로 가기</router-link>
-                <router-link to="/main" class="cancelBtn">주문 취소</router-link>
+                <router-link to="/" class="cancelBtn">뒤로 가기</router-link>
+                <router-link to="/" class="cancelBtn">주문 취소</router-link>
                 
             </div>
             <!-- text-card -->
@@ -58,9 +58,6 @@ export default{
     methods : {
         // 결제 페이지 이동
         goResult(){
-            // 위에 두줄 삭제 
-            this.$store.commit('setSavePoint',5);
-            this.$store.commit('setUserVo',{no:2, hp:1325,point:700});
             this.$router.push('/pays/result');
         },/// 결제 페이지 이동 ////
 
@@ -89,7 +86,7 @@ export default{
 		},		
 		timeStop() {  
             clearInterval(this.polling);
-            this.$router.push('/main'); // 시간이 0 되면 자동으로 메인페이지로 감
+            this.$router.push('/'); // 시간이 0 되면 자동으로 메인페이지로 감
 		}
         /////////////////////////// 타이머끝 //////////////////////////////////
     },

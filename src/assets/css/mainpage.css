@@ -1,36 +1,95 @@
 /* main.css  */
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/*************************************************************/
+/*************************************************************/
+/* 슬라이드 관련*/
+.carousel__item {
+	color: var(--vc-clr-white);
+	font-size: 20px;
+	border-radius: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
+.carousel__slide {
+	padding: auto auto;
+}
+
+.carousel__prev, .carousel__next {
+	box-sizing: content-box;
+}
+.slideImg {
+    width: 805px;
+    height : 100vh;
+}
+.wrapper {
+    z-index: -999;
+}
+/*************************************************************/
 /*************************************************************/
 
-/* 매니저 아이콘 */
-.managerMenu{ /* 매니저아이콘 박스 */
-    margin-bottom: 580px;
-}
-.managerMenu .managerBtn{ /* 매니저아이콘 */
-    width: 50px;
-    margin-left: 750px;
-    cursor: pointer;
-}
 
+
+
+/*************************************************************/
+/*************************************************************/
 /* 매장 포장 버튼 */
 .mainBtn{ /* 매장 포장 버튼 박스 */
     text-align: center;
+    position: relative;
+    background-color: rgba(49, 22, 11,0.3);
+    z-index: 999;
+    margin-top: -200px;
+    width: 805px;
+    height: 200px;
 }
 
-.mainBtn button{  /* 매장, 포장 버튼 */
-    background-color: #FED900;
-    border: none;
-    width: 260px;
-    height: 260px;
-    border-radius: 50px;
-    font-size: 50px;
-    font-weight: bold;
+.mainBtn .beforeTouch{
+    color : #fff;
+    font-family: 'yg-jalnan';
+    text-align: center;
+    line-height: 150px;
+    font-size: 80px;
+    padding-top: 20px;
+}
+.mainBtn .afterTouch{
+    padding-top: 20px;
+    display: none;
+}
+
+.mainBtn .afterTouch a{  /* 매장, 포장 버튼 */
+    /* display: inline; */
+    background-color: transparent;
+    /* -webkit-text-stroke: 4px #31160b; */
+    /* border: 5px solid #31160b; */
+    width: 300px;
+    height: 100px;
+    
+    border-right: 10px solid #fff;
+
+    color : #fff;
+    font-size: 100px;
+    font-family: 'yg-jalnan';
+
     cursor: pointer;
+
     margin-left: 38px;
+    padding-right: 50px;
+    
 }
-.mainBtn button:hover{ /* 매장 포장 버튼 마우스 올렸을 때 */
-    background-color: #31160B;
-    color: #fff;
+.mainBtn .afterTouch a:last-child {
+    border: none;
 }
-/*****************************/
+
+.afterTouch a:hover{
+    color: #31160b;
+}
+/*************************************************************/
+/*************************************************************/
 

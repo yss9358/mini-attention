@@ -1,6 +1,6 @@
 <template>
 <div class="pays-logo">
-    <img src="../assets/images/attention.png">
+    <img src="../assets/images/test2.png">
 </div>
 </template>
 

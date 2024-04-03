@@ -29,7 +29,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(list, i) in orderList" v-bind:key="i">
+                            <tr v-for="(list, i) in cartList" v-bind:key="i">
                                 <td>{{ list.name }}</td>
                                 <td>{{ list.count }}</td>
                                 <td>{{ list.price }}</td>
@@ -67,7 +67,7 @@
             </div>
             <!-- timer -->
 
-            <router-link class="goHome" to="/main">처음화면으로 돌아가기</router-link>
+            <router-link class="goHome" to="/">처음화면으로 돌아가기</router-link>
 
         </div>
         <!-- text-result -->
@@ -102,62 +102,62 @@ export default{
             outPrice : "", // 총합이 보여질 문자열
             outPoint : "", // 보유포인트 보여질 문자열
             
-            orderList : [ // 주문 결제 내역 - 합치면 내용 지워야함
-                {
-                    no : 1,
-                    name : '아메리카노',
-                    count : 2,
-                    price : 3000
-                },
-                {
-                    no : 1,
-                    name : '라떼',
-                    count : 5,
-                    price : 3000
-                }
-                ,
-                {
-                    no : 1,
-                    name : '라떼',
-                    count : 5,
-                    price : 3000
-                },
-                {
-                    no : 1,
-                    name : '라떼',
-                    count : 5,
-                    price : 3000
-                },
-                {
-                    no : 1,
-                    name : '라떼',
-                    count : 5,
-                    price : 3000
-                },
-                {
-                    no : 1,
-                    name : '라떼',
-                    count : 5,
-                    price : 3000
-                },
-                {
-                    no : 1,
-                    name : '라떼',
-                    count : 5,
-                    price : 3000
-                },
-                {
-                    no : 1,
-                    name : '라떼',
-                    count : 5,
-                    price : 3000
-                },
-                {
-                    no : 1,
-                    name : '라떼',
-                    count : 5,
-                    price : 3000
-                }
+            cartList : [ // 주문 결제 내역 - 합치면 내용 지워야함
+                // {
+                //     no : 1,
+                //     name : '아메리카노',
+                //     count : 2,
+                //     price : 3000
+                // },
+                // {
+                //     no : 1,
+                //     name : '라떼',
+                //     count : 5,
+                //     price : 3000
+                // }
+                // ,
+                // {
+                //     no : 1,
+                //     name : '라떼',
+                //     count : 5,
+                //     price : 3000
+                // },
+                // {
+                //     no : 1,
+                //     name : '라떼',
+                //     count : 5,
+                //     price : 3000
+                // },
+                // {
+                //     no : 1,
+                //     name : '라떼',
+                //     count : 5,
+                //     price : 3000
+                // },
+                // {
+                //     no : 1,
+                //     name : '라떼',
+                //     count : 5,
+                //     price : 3000
+                // },
+                // {
+                //     no : 1,
+                //     name : '라떼',
+                //     count : 5,
+                //     price : 3000
+                // },
+                // {
+                //     no : 1,
+                //     name : '라떼',
+                //     count : 5,
+                //     price : 3000
+                // },
+                // {
+                //     no : 1,
+                //     name : '라떼',
+                //     count : 5,
+                //     price : 3000
+                // }
             ],
 
             billVo : { // db 에서 bill 테이블에 넣을 데이터
@@ -171,7 +171,7 @@ export default{
     methods : {
         
         // 결제완료된 데이터 등록, 주문번호 받아오기
-        goMain (){  // 결제완료되면 결제완료 페이지로 이동되고 데이터를 보내서 등록,
+        getOrderNo (){  // 결제완료되면 결제완료 페이지로 이동되고 데이터를 보내서 등록,
                     // 주문번호를 받아와서 화면에 표시 
             let data = {};
             data.billVo = this.billVo;      // bill 테이블에 등록할 데이터
@@ -192,16 +192,15 @@ export default{
                 } else {
                     alert(response.data.message);
                 }
-
             }).catch(error => {
                 console.log(error);
             });
         },
 
         // 리스트 가져오기
-        getOrderList(){ // storage보고 내용 바꾸기
-            console.log("getOrderList");
-            // this.orderList = this.$store.state.orderlist;
+        getCartList(){ // storage보고 내용 바꾸기
+            console.log("getCartList");
+            // this.cartList = this.$store.state.cartList;
         },
 
         // 유저정보 가져오기
@@ -219,8 +218,8 @@ export default{
         // 총 매출 표기
         plus(){
             let count = 0;
-            for(let i=0; i<this.orderList.length; i++){
-                count += (this.orderList[i].count)*(this.orderList[i].price);
+            for(let i=0; i<this.cartList.length; i++){
+                count += (this.cartList[i].count)*(this.cartList[i].price);
             }
             this.billVo.total = Number(count);
             this.totalPrice = Number(count);
@@ -260,17 +259,17 @@ export default{
 		},		
 		timeStop() {
             clearInterval(this.polling);
-            // this.$router.push('/main'); // 시간이 0 이 되면 메인페이지로 이동
+            this.$router.push('/'); // 시간이 0 이 되면 메인페이지로 이동
 		}
          /////////////////////////////////////// 타이머 ///////////////////////////////////////
     },    
     created (){
         this.start(); // 타이머
         this.getUserVo(); // 정보 모을때 사용 
-        this.getOrderList(); // 장바구니 가져오기
+        this.getCartList(); // 장바구니 가져오기
         this.plus(); // 총합구하기
         this.getPoint(); // 포인트 나타낼때 쓰는거 
-        this.goMain(); // 데이터 넘기고 받기 
+        this.getOrderNo(); // 데이터 넘기고 받기 
     }
 }
 </script>

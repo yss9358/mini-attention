@@ -4,7 +4,8 @@ import createPersistedState from 'vuex-persistedstate';
 export default createStore({
     state() {
         return {
-            payment : '',
+            cartList : "",
+            payMethod : '',
             userVo : {
                 no : "",
                 point : "",
@@ -14,8 +15,11 @@ export default createStore({
         };  
     },
     mutations: {
+        setCartList(state,payload){
+            state.cartList = payload;
+        },
         setPay(state,payload){
-            state.payment = payload;
+            state.payMethod = payload;
         },
         setUserVo(state,payload){
             state.userVo = payload;
@@ -27,7 +31,7 @@ export default createStore({
     },
     plugins: [
         createPersistedState({
-            paths: ['userVo', 'savePoint', 'payment']
+            paths: ['cartList','payMethod', 'userVo', 'savePoint']
         })
     ]
 });

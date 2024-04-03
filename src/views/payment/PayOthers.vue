@@ -33,8 +33,8 @@
                 </div><br>
                 <!-- timer -->
 
-                <router-link to="/main" class="cancelBtn">뒤로 가기</router-link>
-                <router-link to="/main" class="cancelBtn">주문 취소</router-link>
+                <router-link to="/" class="cancelBtn">뒤로 가기</router-link>
+                <router-link to="/" class="cancelBtn">주문 취소</router-link>
 
             </div>
             <!-- text-others -->
@@ -116,7 +116,7 @@ export default{
 		},		
 		timeStop() {  
             clearInterval(this.polling);
-            this.$router.push('/main'); // 시간이 0 되면 자동으로 메인페이지로 감
+            this.$router.push('/'); // 시간이 0 되면 자동으로 메인페이지로 감
 		}
         /////////////////////////// 타이머끝 //////////////////////////////////
 
